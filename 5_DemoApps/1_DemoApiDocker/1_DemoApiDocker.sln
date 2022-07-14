@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_DemoApiDocker", "1_DemoApiDocker\1_DemoApiDocker.csproj", "{0ED1A5FF-51BE-4410-9505-50212176B770}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0ED1A5FF-51BE-4410-9505-50212176B770}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ED1A5FF-51BE-4410-9505-50212176B770}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ED1A5FF-51BE-4410-9505-50212176B770}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ED1A5FF-51BE-4410-9505-50212176B770}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4F4F8C5-29CD-4C06-9C9F-3F1A11DF905B}
+	EndGlobalSection
+EndGlobal
