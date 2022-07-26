@@ -35,18 +35,42 @@
 
 #Cria uma net core sdk 5.0
 #Cada from é um novo estágio que substitui o anterior
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+#Stagio 1 - Publish
+#FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build #build é o nome do estágio
+#
+## Define o diretório de trabalho de um contêiner do docker a qualquer momento.
+#WORKDIR /src
+#COPY 1_DemoApiDocker.csproj .
+#RUN dotnet restore
+#COPY . .
+#RUN dotnet publish -c release -o /app
+#
+##Stagio 2 - Production
+#FROM mcr.microsoft.com/dotnet/aspnet:5.0 
+#WORKDIR /app
+#COPY --from=build /app .  #passando informações entre os diferentes estágios
+#
+## Informa ao docker para configurar o contêiner para ser executado como um executável.
+#ENTRYPOINT ["dotnet", "1_DemoApiDocker.dll"]
 
-# Define o diretório de trabalho de um contêiner do docker a qualquer momento.
+
+#Docker FILE OTIMIZADO
+# ~~> STAGE 1- BASE
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base 
+WORKDIR /src
+EXPOSE 80
+EXPOSE 443
+
+# ~~> STAGE 2- PUBLISH
+FROM mcr.microsoft.com/dotnet/sdk:5.0  AS publish
 WORKDIR /src
 COPY 1_DemoApiDocker.csproj .
 RUN dotnet restore
 COPY . .
-RUN dotnet publish -c release -o /app
+RUN dotnet publish -c release -o /dist
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 
-WORKDIR /app
-COPY --from=build /app .
-
-# Informa ao docker para configurar o contêiner para ser executado como um executável.
+# ~~> STAGE 3- END
+FROM base AS end
+WORKDIR /dist
+COPY --from=publish /dist . 
 ENTRYPOINT ["dotnet", "1_DemoApiDocker.dll"]

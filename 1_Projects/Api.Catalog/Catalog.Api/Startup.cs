@@ -1,3 +1,7 @@
+﻿using Catalog.Core.IRepository;
+using Catalog.Infraestructure.Config;
+using Catalog.Infraestructure.Context;
+using Catalog.Infraestructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +23,9 @@ namespace Catalog.Api
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      services.Configure<DbSettings>(Configuration.GetSection("DbSettings"));
+      services.AddScoped<ICatalogContext, CatalogContext>();
+      services.AddScoped<IProductRepository, ProductRepository>();
 
       services.AddControllers();
       services.AddSwaggerGen(c =>
