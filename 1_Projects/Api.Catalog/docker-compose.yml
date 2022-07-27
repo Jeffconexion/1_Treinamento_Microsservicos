@@ -1,14 +1,33 @@
 version: '3.4'
 
+# ~~> DEFININDO OS VOLUMES
+volumes:
+  mongo_data:
+
+# ~~> DEFININDO CONTAINER DO MONGO
 services:
   catalogdb:
+    container_name: catalogdb
+    restart: always
     image: mongo
+    ports:
+       - "27017:27017" 
+    volumes:
+       - mongo_data:/data/db 
 
+# ~~> DEFININDO CONTAINER DA CATALOG.API
   catalog.api:
-    image: ${DOCKER_REGISTRY-}catalogapi
+    container_name: catalog.api
+    environment:
+       - ASPNETCORE_ENVIRONMENT=Development
+    image: catalogapi
     build:
       context: .
       dockerfile: Catalog.Api/Dockerfile
+    depends_on:
+       - catalogdb
+    ports:
+       - "8000:80"
 
-volumes:
-  mongo_data:
+
+       

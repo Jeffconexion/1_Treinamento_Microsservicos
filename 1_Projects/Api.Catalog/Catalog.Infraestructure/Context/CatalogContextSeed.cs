@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Catalog.Core.Entities;
-using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Catalog.Infraestructure.Context
