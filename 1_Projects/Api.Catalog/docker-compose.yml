@@ -1,5 +1,4 @@
 version: '3.4'
-
 # ~~> DEFININDO OS VOLUMES
 volumes:
   mongo_data:

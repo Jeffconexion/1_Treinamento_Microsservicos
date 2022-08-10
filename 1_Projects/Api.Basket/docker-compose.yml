@@ -1,0 +1,27 @@
+version: '3.4'
+# ~~> DEFININDO OS VOLUMES
+volumes:
+  mongo_data:
+
+# ~~> DEFININDO CONTAINER DO REDIS
+services:
+  basketredis:
+    container_name: basketdb
+    restart: always
+    image: redis:alpine
+    ports:
+       - "6379:6379" 
+    
+# ~~> DEFININDO CONTAINER DA BASKET.API
+  catalog.api:
+    container_name: basket.api
+    environment:
+       - ASPNETCORE_ENVIRONMENT=Development
+    image: basketapi
+    build:
+      context: .
+      dockerfile: Api.Basket/Dockerfile
+    depends_on:
+       - basketredis
+    ports:
+       - "8001:80"
