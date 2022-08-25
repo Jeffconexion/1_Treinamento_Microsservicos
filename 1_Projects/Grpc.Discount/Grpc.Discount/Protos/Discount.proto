@@ -1,0 +1,42 @@
+
+// Definindo a versão do protocol buffer.
+syntax = "proto3";
+
+option csharp_namespace = "Grpc.Discount.Protos";
+
+service DiscountProtoService{
+    rpc GetDiscount(GetDiscountRequest) returns (CouponModel);// Tem um parametro de entrada e outro de saída.
+    rpc CreateDiscount(CreatDiscountRequest) returns (CouponModel);
+    rpc UpdateDiscount(UpdateDiscountRequest) returns (CouponModel);
+    rpc DeleteDiscount(DeleteDiscountRequest) returns (DeleteDiscountResponse);
+}
+
+// É uma definição de mensagem que vai conter o tipo, nome e valor.
+message CouponModel{
+// Os números de campo são identificadores únicos,
+//usados para identificar seus campos no formato binário de mensagem.
+    int32 id = 1;
+    string productName = 2;
+    string description = 3;
+    int32 amount = 4;
+}
+
+message GetDiscountRequest{
+    string productName = 1;
+}
+
+message CreatDiscountRequest{
+    CouponModel coupon = 1;
+}
+
+message UpdateDiscountRequest{
+    CouponModel coupon = 1;
+}
+
+message DeleteDiscountRequest{
+    string productName = 1;
+}
+
+message DeleteDiscountResponse{
+    bool success = 1;
+}
