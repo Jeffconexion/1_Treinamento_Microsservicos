@@ -13,7 +13,7 @@ There are apis and grpc service.
 <p display="inline-block">
 <dl>
 <dt> 
-<img  width="150%" src="https://github.com/Jeffconexion/Challenge_BC/blob/main/1_Projects/img/ArquiteturaDaSolucao.png"/> 
+<img  width="150%" src="https://github.com/Jeffconexion/1_Treinamento_Microsservicos/blob/main/arquitetura.png"/> 
 </dt>
 </dl>
 </p>
@@ -23,7 +23,7 @@ There are apis and grpc service.
 <p display="inline-block">
 <p>
   <img width="10%"  src="https://static.wikia.nocookie.net/logopedia/images/e/ec/Microsoft_Visual_Studio_2022.svg" alt="vs-logo"/>
-<img width="10%"  src="https://www.freeiconspng.com/uploads/c-logo-icon-18.png" alt="csharp-logo"/>
+  <img width="10%"  src="https://www.freeiconspng.com/uploads/c-logo-icon-18.png" alt="csharp-logo"/>
 
 </p>
 </p>
