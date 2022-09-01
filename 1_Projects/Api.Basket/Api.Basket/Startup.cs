@@ -1,4 +1,7 @@
-﻿using Basket.API.Repositories;
+﻿using System;
+using Api.Basket.ExternalService;
+using Basket.API.Repositories;
+using Grpc.Discount.Protos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -27,7 +30,15 @@ namespace Api.Basket
 
       });
 
+
       services.AddScoped<IBasketRepository, BasketRepository>();
+      services.AddScoped<DiscountGrpcService>();
+
+      //registrado o serviço GRPC que ela irá consumir.
+      services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
+          options => options.Address = new Uri(Configuration["GrpcSettings:DiscountUrl"]
+          ));
+
       services.AddControllers();
       services.AddSwaggerGen(c =>
       {

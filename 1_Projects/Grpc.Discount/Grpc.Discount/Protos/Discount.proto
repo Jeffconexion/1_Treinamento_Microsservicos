@@ -1,5 +1,7 @@
 
 // Definindo a versão do protocol buffer.
+// ~~> Em propets do projeto, vejo o caminho e a porta para colocar no client do appseetings
+// ~~> http://localhost:5003
 syntax = "proto3";
 
 option csharp_namespace = "Grpc.Discount.Protos";
